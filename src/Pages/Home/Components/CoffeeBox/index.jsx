@@ -18,11 +18,11 @@ export function CoffeeBox(props) {
 
   function handleDecrement() {
     context.dispatch({
-      type: 'DECREMENT',
+      type: 'DECREMENT', payload: context.state.amount - 1
     })
   }
   function handleIncrement() {
-    context.dispatch({ type: 'INCREMENT' })
+    context.dispatch({ type: 'INCREMENT', payload: context.state.amount + 1 })
   }
   return (
     <CoffeeBoxContainer>
