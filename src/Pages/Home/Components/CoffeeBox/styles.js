@@ -127,7 +127,10 @@ export const IncrementDecrementContainer = styled.div`
     font-weight: 400;
     line-height: 130%;
   }
-
+button{
+  border: none;
+  background-color: none;
+}
   svg {
     color: ${(props) => props.theme["purple"]};
     cursor: pointer;

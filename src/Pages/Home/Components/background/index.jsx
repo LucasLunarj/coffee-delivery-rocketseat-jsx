@@ -6,7 +6,7 @@ import {
   ShoppingCartContainer,
   TimerContainer,
 } from "./styles";
-import coffe from "../../../../assets/cofee-logo.svg";
+import coffee from "../../../../assets/cofee-logo.svg";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 export function Background() {
   return (
@@ -49,7 +49,7 @@ export function Background() {
             </div>
           </AboutContainer>
         </div>
-        <img src={coffe} alt="" />
+        <img src={coffee} alt="" />
       </BackgroundContainer>
     </div>
   );

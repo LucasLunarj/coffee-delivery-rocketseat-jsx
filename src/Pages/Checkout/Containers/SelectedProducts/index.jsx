@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { CoffeeListBox } from "./component/CoffeeListBox";
 import {
   CoffeeChartListContainer,
@@ -10,14 +11,19 @@ import {
   TotalAmountItems,
   TotalPrice,
 } from "./styles";
+import { CoffeeListContext } from "../../../../contexts/CoffeListContext";
 
 export function SelectedProducts() {
+  const context = useContext(CoffeeListContext)
+  const { state } = context
+  const info = state.filteredList
+  console.log(info, 'TEstando tudo')
   return (
     <SelectedProductsContainer>
       <h2>Cafés selecionados</h2>
       <CoffeeChartListContainer>
         <CoffeeList>
-          <CoffeeListBox />
+          {context.state.filteredList.map((item) => <CoffeeListBox key={item.id} {...item} />)}
           <Divider />
           <CoffeeListBox />
           <Divider />

@@ -7,17 +7,18 @@ import {
   RemoveButton,
 } from "./styles";
 
-import coffeeimg from "../../../../../../assets/Coffee-Pictures/Type=Expresso.png";
+
 import { Minus, Plus, Trash } from "phosphor-react";
 
-export function CoffeeListBox() {
+export function CoffeeListBox(props) {
+  console.log(props, '22')
   return (
     <CoffeeItemContainer>
       <DivContainer>
         <div>
-          <img src={coffeeimg} alt="" />
+          <img src={props.img} alt="" />
           <ButtonArea>
-            <p>Expresso Tradicional</p>
+            <p>{props.coffeeTitle}</p>
             <div>
               <IncrementDecrementContainer>
                 <Minus size={14} />

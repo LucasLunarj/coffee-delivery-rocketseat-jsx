@@ -10,7 +10,7 @@ import {
 
 export function Home() {
   const context = useContext(CoffeeListContext);
-  console.log(context.state);
+
   return (
     <HomeContainer>
       <Background />
@@ -20,7 +20,7 @@ export function Home() {
           <h1>Nossos cafés</h1>
         </div>
         <CoffeeItems>
-          {context.state?.map((item) => (
+          {context.state.list?.map((item) => (
             <CoffeeBox key={item.id} {...item} />
           ))}
         </CoffeeItems>
