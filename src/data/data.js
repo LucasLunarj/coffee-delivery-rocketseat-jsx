@@ -15,7 +15,7 @@ import Hawaiian from "../assets/Coffee-Pictures/Hawaiian.png";
 import Arabic from "../assets/Coffee-Pictures/Arabic.png";
 import Irish from "../assets/Coffee-Pictures/Irish.png";
 
-export const CoffeeItens = {
+export let CoffeeItens = {
   list: [
     {
       id: uuidv4(),
@@ -25,7 +25,7 @@ export const CoffeeItens = {
       coffeeDescription:
         "O tradicional café feito com água quente e grãos moídos",
       price: 9.9,
-      amount: 0,
+      amount: 1,
     },
     {
       id: uuidv4(),
@@ -34,7 +34,7 @@ export const CoffeeItens = {
       typeOfCoffee: ["tradicional"],
       coffeeDescription: "Expresso diluído, menos intenso que o tradicional",
       price: 9.9,
-      amount: 0,
+      amount: 1,
     },
     {
       id: uuidv4(),
@@ -43,7 +43,7 @@ export const CoffeeItens = {
       typeOfCoffee: ["tradicional"],
       coffeeDescription: "Café expresso tradicional com espuma cremosa",
       price: 9.9,
-      amount: 0,
+      amount: 1,
     },
     {
       id: uuidv4(),
@@ -52,7 +52,7 @@ export const CoffeeItens = {
       typeOfCoffee: ["tradicional", "gelado"],
       coffeeDescription: "Bebida preparada com café expresso e cubos de gelo",
       price: 9.9,
-      amount: 0,
+      amount: 1,
     },
     {
       id: uuidv4(),
@@ -62,7 +62,7 @@ export const CoffeeItens = {
       coffeeDescription:
         "Meio a meio de expresso tradicional com leite vaporizado",
       price: 9.9,
-      amount: 0,
+      amount: 1,
     },
     {
       id: uuidv4(),
@@ -72,7 +72,7 @@ export const CoffeeItens = {
       coffeeDescription:
         "Uma dose de café expresso com o dobro de leite e espuma cremosa ",
       price: 9.9,
-      amount: 0,
+      amount: 1,
     },
     {
       id: uuidv4(),
@@ -82,7 +82,7 @@ export const CoffeeItens = {
       coffeeDescription:
         "Bebida com canela feita de doses iguais de café, leite e espuma",
       price: 9.9,
-      amount: 0,
+      amount: 1,
     },
     {
       id: uuidv4(),
@@ -92,7 +92,7 @@ export const CoffeeItens = {
       coffeeDescription:
         "Café expresso misturado com um pouco de leite quente e espuma",
       price: 9.9,
-      amount: 0,
+      amount: 1,
     },
     {
       id: uuidv4(),
@@ -102,7 +102,7 @@ export const CoffeeItens = {
       coffeeDescription:
         "Café expresso com calda de chocolate, pouco leite e espuma",
       price: 9.9,
-      amount: 0,
+      amount: 1,
     },
     {
       id: uuidv4(),
@@ -112,7 +112,7 @@ export const CoffeeItens = {
       coffeeDescription:
         "Bebida feita com chocolate dissolvido no leite quente e café",
       price: 9.9,
-      amount: 0,
+      amount: 1,
     },
     {
       id: uuidv4(),
@@ -122,7 +122,7 @@ export const CoffeeItens = {
       coffeeDescription:
         "Drink gelado de café expresso com rum, creme de leite e hortelã",
       price: 9.9,
-      amount: 0,
+      amount: 1,
     },
     {
       id: uuidv4(),
@@ -131,7 +131,7 @@ export const CoffeeItens = {
       typeOfCoffee: ["especial"],
       coffeeDescription: "Bebida adocicada preparada com café e leite de coco",
       price: 9.9,
-      amount: 0,
+      amount: 1,
     },
     {
       id: uuidv4(),
@@ -140,7 +140,7 @@ export const CoffeeItens = {
       typeOfCoffee: ["especial"],
       coffeeDescription: "Bebida preparada com grãos de café árabe e especiarias",
       price: 9.9,
-      amount: 0,
+      amount: 1,
     },
     {
       id: uuidv4(),
@@ -150,7 +150,7 @@ export const CoffeeItens = {
       coffeeDescription:
         "Bebida a base de café, uísque irlandês, açúcar e chantilly",
       price: 9.9,
-      amount: 0,
+      amount: 1,
     },
   ],
   filteredList: []

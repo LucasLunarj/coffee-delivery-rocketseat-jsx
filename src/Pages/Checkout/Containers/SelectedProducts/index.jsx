@@ -16,16 +16,14 @@ import { CoffeeListContext } from "../../../../contexts/CoffeListContext";
 export function SelectedProducts() {
   const context = useContext(CoffeeListContext)
   const { state } = context
-  const info = state.filteredList
-  console.log(info, 'TEstando tudo')
   return (
     <SelectedProductsContainer>
       <h2>Cafés selecionados</h2>
       <CoffeeChartListContainer>
         <CoffeeList>
-          {context.state.filteredList.map((item) => <CoffeeListBox key={item.id} {...item} />)}
-          <Divider />
-          <CoffeeListBox />
+          {state.filteredList?.map((item, index) => <CoffeeListBox key={item.id} index={index} {...item[0]} />)}
+
+
           <Divider />
           <PriceAreaContainer>
             <TotalAmountItems>

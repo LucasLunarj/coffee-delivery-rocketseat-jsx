@@ -19,7 +19,8 @@ export const SelectedProductsContainer = styled.div`
 
 export const CoffeeChartListContainer = styled.div`
   width: 448px;
-  height: 498px;
+  min-height: 498px;
+  height: auto;
   padding: 40px;
 
   border-radius: 6px 44px;

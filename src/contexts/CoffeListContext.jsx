@@ -7,8 +7,7 @@ export const CoffeeListContext = createContext(null);
 
 // eslint-disable-next-line react/prop-types
 export const CoffeeListProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer,
-    CoffeeItens
+  const [state, dispatch] = useReducer(reducer, CoffeeItens
   )
 
   return (

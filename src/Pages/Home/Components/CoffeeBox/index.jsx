@@ -57,8 +57,8 @@ export function CoffeeBox(props) {
             <Plus size={14} onClick={() => handleIncrement()} />
           </IncrementDecrementContainer>
 
-          <button>
-            <ShoppingCart onClick={() => handleAddItenToCart()} size={22} weight="fill" />
+          <button onClick={() => handleAddItenToCart()} >
+            <ShoppingCart size={22} weight="fill" />
           </button>
         </div>
       </PriceContainer>

@@ -1,8 +1,8 @@
-
+import { produce } from 'immer'
 
 export const reducer = (state, action) => {
 
-  console.log(state)
+
   switch (action.type) {
 
     case "INCREMENT":
@@ -24,8 +24,34 @@ export const reducer = (state, action) => {
         })
       }
     case "FILTERED-LIST":
-      console.log(state.filteredList)
-      return { ...state, filteredList: [...state.filteredList, state.list.filter((item) => item.id === action.payload)] }
+
+
+      return produce(state, draft => {
+
+        draft.filteredList.push(draft.list.filter(item => item.id === action.payload))
+
+      })
+    case "REMOVE":
+      return produce(state, draft => {
+        draft.filteredList.splice(action.payload, 1)
+      })
+
+    case "INCREMENT_FILTERED_LIST":
+
+      return {
+        ...state, filteredList: state.filteredList.map((item) => {
+          if (item[0].id === action.payload) {
+            console.log(action.payload, ...item[0], 'item')
+            return {
+              ...item, amount: item.amount + 1
+            }
+
+          }
+
+          return item
+        })
+      }
 
   }
 }
+

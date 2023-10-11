@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import {
   ButtonArea,
   CoffeeItemContainer,
@@ -9,23 +10,34 @@ import {
 
 
 import { Minus, Plus, Trash } from "phosphor-react";
+import { CoffeeListContext } from "../../../../../../contexts/CoffeListContext";
+
 
 export function CoffeeListBox(props) {
-  console.log(props, '22')
+  const { img, coffeeTitle, amount, index, id } = props
+  const context = useContext(CoffeeListContext)
+  function handleIncrement() {
+    context.dispatch({ type: "INCREMENT_FILTERED_LIST", payload: id })
+
+  }
+  function handleRemove() {
+    context.dispatch({ type: 'REMOVE', payload: index })
+
+  }
   return (
     <CoffeeItemContainer>
       <DivContainer>
         <div>
-          <img src={props.img} alt="" />
+          <img src={img} alt="" />
           <ButtonArea>
-            <p>{props.coffeeTitle}</p>
+            <p>{coffeeTitle}</p>
             <div>
               <IncrementDecrementContainer>
                 <Minus size={14} />
-                <p>1</p>
-                <Plus size={14} />
+                <p>{amount}</p>
+                <Plus onClick={() => handleIncrement()} size={14} />
               </IncrementDecrementContainer>
-              <RemoveButton>
+              <RemoveButton onClick={() => handleRemove()}>
                 <Trash size={16} /> Remover
               </RemoveButton>
             </div>
