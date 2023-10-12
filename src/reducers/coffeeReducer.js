@@ -36,22 +36,23 @@ export const reducer = (state, action) => {
         draft.filteredList.splice(action.payload, 1)
       })
 
-    case "INCREMENT_FILTERED_LIST":
+    case 'OPEN_AND_CLOSE_MENU':
+      return {
+        ...state, menuSwitcher: action.payload
+      }
 
+    case "INCREMENT_FILTERED_LIST":
       return {
         ...state, filteredList: state.filteredList.map((item) => {
           if (item[0].id === action.payload) {
-            console.log(action.payload, ...item[0], 'item')
+            console.log(item[0])
             return {
-              ...item, amount: item.amount + 1
+              ...item, amount: item[0].amount + 1
             }
-
           }
-
           return item
         })
       }
-
   }
 }
 

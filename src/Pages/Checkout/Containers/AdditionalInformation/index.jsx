@@ -15,8 +15,10 @@ import {
   PaymentOptionContainer,
   SelectPaymentMethodContainer,
 } from "./styles";
+import { useForm } from 'react-hook-form'
 
 export function AdditionalInformation() {
+  const { register } = useForm()
   return (
     <InformationContainer>
       <AdditionalInformationContainer>
@@ -36,16 +38,17 @@ export function AdditionalInformation() {
               id=""
               placeholder="CEP"
               inputMode="numeric"
+              {...register('cep')}
             />
-            <input type="text" name="" id="" placeholder="Rua" />
+            <input type="text" name="" id="" placeholder="Rua" {...register('street')} />
             <div>
-              <input type="number" name="" id="" placeholder="Número" />
-              <input type="text" name="" id="" placeholder="Complemento" />
+              <input type="number" name="" id="" placeholder="Número" {...register('number')} />
+              <input type="text" name="" id="" placeholder="Complemento" {...register('complemento')} />
             </div>
             <div>
-              <input type="text" placeholder="Bairro" />
-              <input type="text" placeholder="Cidade" />
-              <input type="text" placeholder="UF" maxLength={2} />
+              <input type="text" placeholder="Bairro" {...register('neighboorhood')} />
+              <input type="text" placeholder="Cidade" {...register('city')} />
+              <input type="text" placeholder="UF" maxLength={2} {...register('uf')} />
             </div>
           </FormContainer>
         </AddressInformationContainer>

@@ -12,7 +12,8 @@ export function Home() {
   const context = useContext(CoffeeListContext);
 
   return (
-    <HomeContainer>
+
+    <HomeContainer onClick={() => handleCloseMenu}>
       <Background />
 
       <CoffeeListContainer>

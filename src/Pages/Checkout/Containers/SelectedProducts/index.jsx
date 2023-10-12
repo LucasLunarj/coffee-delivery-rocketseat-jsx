@@ -12,10 +12,13 @@ import {
   TotalPrice,
 } from "./styles";
 import { CoffeeListContext } from "../../../../contexts/CoffeListContext";
-
+import { useForm } from 'react-hook-form'
 export function SelectedProducts() {
   const context = useContext(CoffeeListContext)
   const { state } = context
+
+  console.log(context.state.filteredList, 'test')
+  const { handleSubmit } = useForm()
   return (
     <SelectedProductsContainer>
       <h2>Cafés selecionados</h2>
@@ -39,7 +42,7 @@ export function SelectedProducts() {
               <p>R$ 33,20</p>
             </TotalPrice>
           </PriceAreaContainer>
-          <ConfirmButton>Confirmar Pedido</ConfirmButton>
+          <ConfirmButton  >Confirmar Pedido</ConfirmButton>
         </CoffeeList>
       </CoffeeChartListContainer>
     </SelectedProductsContainer>

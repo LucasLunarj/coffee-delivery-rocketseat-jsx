@@ -153,5 +153,8 @@ export let CoffeeItens = {
       amount: 1,
     },
   ],
-  filteredList: []
+  filteredList: [],
+
+  menuSwitcher: false
+
 }
