@@ -15,10 +15,18 @@ import {
   PaymentOptionContainer,
   SelectPaymentMethodContainer,
 } from "./styles";
-import { useForm } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
+import { useContext } from "react";
+import { CoffeeListContext } from "../../../../contexts/CoffeListContext";
 
 export function AdditionalInformation() {
-  const { register } = useForm()
+  const context = useContext(CoffeeListContext)
+  const { register } = useFormContext()
+  function handleSelectPaymentMethod(payment) {
+    context.dispatch({ type: 'PAYMENT_METHOD', payload: payment })
+  }
+
+
   return (
     <InformationContainer>
       <AdditionalInformationContainer>
@@ -31,14 +39,16 @@ export function AdditionalInformation() {
               <p>Informe o endereço onde deseja receber seu pedido</p>
             </div>
           </AddressTitleContainer>
-          <FormContainer>
+
+          <FormContainer >
             <input
               type="text"
               name=""
               id=""
               placeholder="CEP"
               inputMode="numeric"
-              {...register('cep')}
+              maxLength={9}
+              {...register("cep", { maxLength: 9, required: true })}
             />
             <input type="text" name="" id="" placeholder="Rua" {...register('street')} />
             <div>
@@ -50,6 +60,7 @@ export function AdditionalInformation() {
               <input type="text" placeholder="Cidade" {...register('city')} />
               <input type="text" placeholder="UF" maxLength={2} {...register('uf')} />
             </div>
+
           </FormContainer>
         </AddressInformationContainer>
       </AdditionalInformationContainer>
@@ -65,21 +76,21 @@ export function AdditionalInformation() {
             </div>
           </PaymentMethodTitleContainer>
           <PaymentOptionContainer>
-            <button>
+            <button onClick={() => handleSelectPaymentMethod('Cartão de Crédito')}>
               <CreditCard size={16} />
               <p>CARTÃO DE CRÉDITO</p>
             </button>
-            <button>
+            <button onClick={() => handleSelectPaymentMethod('Cartão de Débito')}>
               <Bank size={16} />
               <p>CARTÃO DE DÉBITO</p>
             </button>
-            <button>
+            <button onClick={() => handleSelectPaymentMethod('Dinheiro')}>
               <Money size={16} />
               <p>Dinheiro</p>
             </button>
           </PaymentOptionContainer>
         </div>
       </SelectPaymentMethodContainer>
-    </InformationContainer>
+    </InformationContainer >
   );
 }

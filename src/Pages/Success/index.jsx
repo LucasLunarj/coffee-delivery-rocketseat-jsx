@@ -8,8 +8,13 @@ import {
   TitleContainer,
 } from "./styles";
 import illustration from "../../assets/Illustration.png";
+import { useContext } from "react";
+import { CoffeeListContext } from "../../contexts/CoffeListContext";
 
 export function Success() {
+  const context = useContext(CoffeeListContext)
+  const { state } = context
+  console.log(context.state, "success")
   return (
     <SuccessOrderContainer>
       <div>
@@ -22,9 +27,9 @@ export function Success() {
             <MapPin size={16} weight="fill" />
             <div>
               <p>
-                Entrega em <span>Rua João Daniel Martinello, 102</span>
+                Entrega em <span>{context.state.deliveryInformation.street}, {context.state.deliveryInformation.number}</span>
               </p>
-              <p>Farrapos - Porto Alegre, RS</p>
+              <p>{`${state.deliveryInformation.neighboorhood}- ${state.deliveryInformation.city}, ${state.deliveryInformation.uf}`}</p>
             </div>
           </AddressAreaContainer>
 
@@ -42,7 +47,7 @@ export function Success() {
             <div>
               <p>Pagamento na entrega </p>
               <p>
-                <span>Cartão de crédito</span>
+                <span>{state.paymentMethodSelected}</span>
               </p>
             </div>
           </PaymentMethodContainer>

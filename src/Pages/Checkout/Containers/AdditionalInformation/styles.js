@@ -4,6 +4,12 @@ export const InformationContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+ 
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+
 `;
 
 export const AdditionalInformationContainer = styled.div`
@@ -22,11 +28,16 @@ export const AdditionalInformationContainer = styled.div`
     font-weight: 700;
     line-height: 130%;
   }
+  @media (max-width: 600px) {
+    h2{
+      text-align: center;
+    }
+  }
 `;
 
 export const AddressInformationContainer = styled.div`
   padding: 40px;
-  width: 640px;
+  max-width: 100%;
   height: 372px;
   border-radius: 6px;
   background: ${(props) => props.theme["base-card"]};
@@ -37,16 +48,23 @@ export const AddressInformationContainer = styled.div`
   div {
     display: flex;
   }
+  @media (max-width:600px ) {
+    height: auto;
+    max-height: auto;
+  }
 `;
 
-export const FormContainer = styled.form`
+export const FormContainer = styled.div`
   margin-top: 32px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 
+
+
   div {
     display: flex;
+    flex-direction: row;
     gap: 12px;
   }
 
@@ -57,6 +75,7 @@ export const FormContainer = styled.form`
     border-radius: 4px;
     outline: none;
     color: ${(props) => props.theme["base-text"]};
+    width: 100%;
 
     font-family: "Roboto";
     font-size: 14px;
@@ -70,11 +89,20 @@ export const FormContainer = styled.form`
   input:focus {
     border: 1px solid ${(props) => props.theme["yellow-dark"]};
   }
+  @media (max-width: 600px) {
+    height: auto;
+    margin-left: 20px;
+margin-right: 20px;
+   div{
+    flex-direction: column;
+   }
+  }
 `;
 
 export const SelectPaymentMethodContainer = styled.div`
-  width: 640px;
-  height: 207px;
+  max-width: 100%;
+  max-height: 207px;
+  width: 100%;
 
   display: flex;
   justify-content: center;
@@ -97,7 +125,8 @@ export const PaymentOptionContainer = styled.div`
   border: 1px solid ${(props) => props.theme["base-card"]};
 
   button {
-    width: 178.66px;
+    max-width: 178.66px;
+    width: 100%;
     height: 51px;
 
     padding: 16px;
@@ -177,3 +206,4 @@ export const PaymentMethodTitleContainer = styled(BaseTittle)`
     color: ${(props) => props.theme["purple"]};
   }
 `;
+

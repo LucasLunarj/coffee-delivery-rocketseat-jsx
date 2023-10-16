@@ -13,7 +13,7 @@ export function Home() {
 
   return (
 
-    <HomeContainer onClick={() => handleCloseMenu}>
+    <HomeContainer >
       <Background />
 
       <CoffeeListContainer>

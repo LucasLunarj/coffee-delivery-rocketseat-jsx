@@ -15,6 +15,13 @@ export const SelectedProductsContainer = styled.div`
     font-weight: 700;
     line-height: 130%;
   }
+  @media (max-width:600px) {
+    margin-top: 0;
+    padding-left: 10px;
+    h2{
+      text-align: center;
+    }
+  }
 `;
 
 export const CoffeeChartListContainer = styled.div`

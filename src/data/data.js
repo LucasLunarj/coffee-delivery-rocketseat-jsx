@@ -155,6 +155,10 @@ export let CoffeeItens = {
   ],
   filteredList: [],
 
-  menuSwitcher: false
+  menuSwitcher: false,
+
+  deliveryInformation: {},
+
+  paymentMethodSelected: ""
 
 }

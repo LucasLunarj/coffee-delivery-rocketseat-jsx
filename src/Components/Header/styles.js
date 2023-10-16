@@ -31,6 +31,9 @@ export const HeaderContainer = styled.header`
   & button:hover {
     color: ${(props) => props.theme["yellow-dark"]};
   }
+  @media (max-width: 600px) {
+    padding: none;
+  }
 `;
 
 export const LocationContainer = styled.div`

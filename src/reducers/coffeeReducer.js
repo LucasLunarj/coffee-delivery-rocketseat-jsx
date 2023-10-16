@@ -43,15 +43,24 @@ export const reducer = (state, action) => {
 
     case "INCREMENT_FILTERED_LIST":
       return {
-        ...state, filteredList: state.filteredList.map((item) => {
+        ...state.filteredList, filteredList: state.filteredList.map((item) => {
           if (item[0].id === action.payload) {
-            console.log(item[0])
+            console.log(item)
             return {
-              ...item, amount: item[0].amount + 1
+              ...item[0], amount: item[0].amount + 3
             }
           }
-          return item
+          return item[0]
         })
+      }
+    case 'GATHERING_DATA_INFORMATION':
+      return {
+        ...state, deliveryInformation: action.payload
+      }
+
+    case 'PAYMENT_METHOD':
+      return {
+        ...state, paymentMethodSelected: action.payload
       }
   }
 }

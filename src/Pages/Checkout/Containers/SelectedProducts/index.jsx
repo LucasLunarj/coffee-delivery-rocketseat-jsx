@@ -12,14 +12,17 @@ import {
   TotalPrice,
 } from "./styles";
 import { CoffeeListContext } from "../../../../contexts/CoffeListContext";
-import { useForm } from 'react-hook-form'
+import { NavLink } from "react-router-dom";
 export function SelectedProducts() {
   const context = useContext(CoffeeListContext)
   const { state } = context
+  let total = state.filteredList[0].reduce(function (acumulador, numeroAtual) {
+    return acumulador + numeroAtual.price
+  }, 0)
+  console.log('total', total)
 
-  console.log(context.state.filteredList, 'test')
-  const { handleSubmit } = useForm()
   return (
+
     <SelectedProductsContainer>
       <h2>Cafés selecionados</h2>
       <CoffeeChartListContainer>
@@ -42,9 +45,11 @@ export function SelectedProducts() {
               <p>R$ 33,20</p>
             </TotalPrice>
           </PriceAreaContainer>
-          <ConfirmButton  >Confirmar Pedido</ConfirmButton>
+          <NavLink to={'/success'}>
+            < ConfirmButton type="submit" >Confirmar Pedido</ConfirmButton >
+          </NavLink>
         </CoffeeList>
       </CoffeeChartListContainer>
-    </SelectedProductsContainer>
+    </SelectedProductsContainer >
   );
 }
