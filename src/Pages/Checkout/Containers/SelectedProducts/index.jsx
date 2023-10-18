@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CoffeeListBox } from "./component/CoffeeListBox";
 import {
   CoffeeChartListContainer,
@@ -14,20 +14,17 @@ import {
 import { CoffeeListContext } from "../../../../contexts/CoffeListContext";
 import { NavLink } from "react-router-dom";
 export function SelectedProducts() {
+
   const context = useContext(CoffeeListContext)
   const { state } = context
-  let total = state.filteredList[0].reduce(function (acumulador, numeroAtual) {
-    return acumulador + numeroAtual.price
-  }, 0)
-  console.log('total', total)
-
+  const [filteredList, setFilteredList] = useState(state.filteredList)
   return (
 
     <SelectedProductsContainer>
       <h2>Cafés selecionados</h2>
       <CoffeeChartListContainer>
         <CoffeeList>
-          {state.filteredList?.map((item, index) => <CoffeeListBox key={item.id} index={index} {...item[0]} />)}
+          {state.filteredList?.map((item, index) => <CoffeeListBox key={item.id} index={index} {...item} />)}
 
 
           <Divider />

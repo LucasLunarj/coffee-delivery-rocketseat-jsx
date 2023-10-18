@@ -127,11 +127,20 @@ export const IncrementDecrementContainer = styled.div`
     font-weight: 400;
     line-height: 130%;
   }
-button{
+button:first-child{
+  width: auto;
+  height: auto;
   border: none;
-  background-color: none;
+  background-color: ${(props) => props.theme["base-button"]};
+  padding-right: 8px;
 }
-  svg {
+button:nth-child(3){
+  width: auto;
+  height: auto;
+  border: none;
+  background-color: ${(props) => props.theme["base-button"]};
+}
+svg {
     color: ${(props) => props.theme["purple"]};
     cursor: pointer;
   }

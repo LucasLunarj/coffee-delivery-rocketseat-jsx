@@ -17,12 +17,12 @@ export function CoffeeListBox(props) {
   const { img, coffeeTitle, amount, index, id } = props
   const context = useContext(CoffeeListContext)
   function handleIncrement() {
-    context.dispatch({ type: "INCREMENT_FILTERED_LIST", payload: id })
+    context.dispatch({ type: "INCREMENT_FILTERED_LIST", payload: props.id })
 
   }
   function handleRemove() {
     context.dispatch({ type: 'REMOVE', payload: index })
-
+    context.dispatch({ type: 'IS_NOT_ACTIVE', payload: id })
   }
   return (
     <CoffeeItemContainer>

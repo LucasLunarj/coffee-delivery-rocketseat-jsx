@@ -9,14 +9,14 @@ import {
 } from "./styles";
 
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CoffeeListContext } from "../../../../contexts/CoffeListContext";
 
 export function CoffeeBox(props) {
   const { coffeeTitle, id, img, coffeeDescription, amount, typeOfCoffee } = props
-
+  const [actualState, setActualState] = useState(false)
   const context = useContext(CoffeeListContext);
-
+  const { state } = context
   function handleDecrement() {
 
     context.dispatch({
@@ -26,7 +26,15 @@ export function CoffeeBox(props) {
   function handleIncrement() {
     context.dispatch({ type: 'INCREMENT', payload: id })
   }
-  function handleAddItenToCart() {
+
+
+  function handleAddItenToCart(id) {
+    // if (id === props.id) {
+    //   setActualState(true)
+    // } else {
+    //   setActualState(false)
+    // }
+    context.dispatch({ type: 'IS_ACTIVE', payload: id })
     context.dispatch({ type: 'FILTERED-LIST', payload: id })
   }
 
@@ -50,14 +58,16 @@ export function CoffeeBox(props) {
         </Price>
         <div>
           <IncrementDecrementContainer>
-            <button disabled={amount === 0}>
+            <button disabled={amount === 1}>
               <Minus onClick={() => handleDecrement()} size={14} />
             </button>
             <p>{amount}</p>
-            <Plus size={14} onClick={() => handleIncrement()} />
+            <button disabled={amount === 9}>
+              <Plus size={14} onClick={() => handleIncrement()} />
+            </button>
           </IncrementDecrementContainer>
 
-          <button onClick={() => handleAddItenToCart()} >
+          <button disabled={props.active} onClick={() => handleAddItenToCart(props.id)} >
             <ShoppingCart size={22} weight="fill" />
           </button>
         </div>
