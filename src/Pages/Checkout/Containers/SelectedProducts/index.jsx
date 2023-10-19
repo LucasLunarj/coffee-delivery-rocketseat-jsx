@@ -24,7 +24,7 @@ export function SelectedProducts() {
       <h2>Cafés selecionados</h2>
       <CoffeeChartListContainer>
         <CoffeeList>
-          {state.filteredList?.map((item, index) => <CoffeeListBox key={item.id} index={index} {...item} />)}
+          {state.filteredList?.map((item, index) => <CoffeeListBox key={item.id} index={index} {...item[0]} />)}
 
 
           <Divider />

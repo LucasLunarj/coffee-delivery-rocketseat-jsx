@@ -26,14 +26,24 @@ export const reducer = (state, action) => {
     case "FILTERED-LIST":
       console.log(state.filteredList)
 
-      return {
+      return ({
         ...state, filteredList: [...state.filteredList, state.list.filter(item => item.id === action.payload)]
-      }
+      })
 
     // return produce(state, draft => {
     //   draft.filteredList.push(draft.list.filter((item) => item.id === action.payload))
     // })
 
+    case "INCREMENT_FILTERED_LIST":
+      console.log(state)
+      return {
+        ...state, filteredList: ([state.filteredList.map(item => {
+          if (action.payload === item[0].id) {
+            return ({ ...item[0], amount: item[0].amount + 1 })
+          }
+          return item
+        })])
+      }
     case 'IS_ACTIVE':
       return {
         ...state, list: state.list.map((item) => {
@@ -44,7 +54,7 @@ export const reducer = (state, action) => {
         })
       }
     case 'IS_NOT_ACTIVE':
-      console.log(state.list)
+
       return {
         ...state, list: state.list.map((item) => {
           if (item.id === action.payload) {
@@ -63,17 +73,7 @@ export const reducer = (state, action) => {
         ...state, menuSwitcher: action.payload
       }
 
-    case "INCREMENT_FILTERED_LIST":
-      console.log(state.filteredList)
-      return {
-        ...state, filteredList: state.filteredList.map((item) => {
-          if (action.payload === item[0].id) {
-            console.log(item)
-            return { ...item[0], amount: item[0].amount + 1 }
-          }
-          return item[0]
-        })
-      }
+
 
 
     case 'GATHERING_DATA_INFORMATION':
