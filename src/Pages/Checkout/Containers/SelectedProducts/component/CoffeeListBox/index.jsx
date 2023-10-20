@@ -29,7 +29,7 @@ export function CoffeeListBox(props) {
 
   }
   function handleRemove() {
-    context.dispatch({ type: 'REMOVE', payload: index })
+    context.dispatch({ type: 'REMOVE', payload: id })
     context.dispatch({ type: 'IS_NOT_ACTIVE', payload: id })
 
   }

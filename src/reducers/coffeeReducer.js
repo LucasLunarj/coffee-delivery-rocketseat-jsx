@@ -39,10 +39,9 @@ export const reducer = (state, action) => {
       console.log(state.filteredList, 'lunita')
       return {
         ...state, filteredList: state.filteredList.map(item => {
-          if (action.payload === item[0].id) {
-            return { ...item[0] }
-          }
-          return item[0]
+
+          return { ...state.filteredList, ...item[0] }
+
         })
       }
     case "INCREMENT_FILTERED_LIST":
@@ -89,10 +88,13 @@ export const reducer = (state, action) => {
         })
       }
     case "REMOVE":
-      return produce(state, draft => {
-        draft.filteredList.splice(action.payload, 1)
-      })
+      // return produce(state, draft => {
+      //   draft.filteredList.splice(action.payload, 1)
+      // })
+      return ({
+        ...state, filteredList: [state.filteredList.filter(item => item.id !== action.payload)]
 
+      })
     case 'OPEN_AND_CLOSE_MENU':
       return {
         ...state, menuSwitcher: action.payload

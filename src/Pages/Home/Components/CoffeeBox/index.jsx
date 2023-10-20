@@ -29,14 +29,10 @@ export function CoffeeBox(props) {
 
 
   function handleAddItenToCart(id) {
-    // if (id === props.id) {
-    //   setActualState(true)
-    // } else {
-    //   setActualState(false)
-    // }
+
     context.dispatch({ type: 'IS_ACTIVE', payload: id })
     context.dispatch({ type: 'FILTERED-LIST', payload: id })
-
+    context.dispatch({ type: 'CONVERT_FILTERED_TO_OBJECT', payload: id })
 
   }
 
