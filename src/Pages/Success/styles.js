@@ -14,9 +14,11 @@ export const SuccessOrderContainer = styled.div`
     margin-top: 100px;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 600px) {
+    flex-direction: column;
     img {
-      display: none;
+      height: auto;
+      width: 100%;
     }
   }
 `;

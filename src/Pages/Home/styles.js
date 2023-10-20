@@ -5,6 +5,12 @@ export const HomeContainer = styled.div`
   height: 100vh;
 
   flex-direction: column;
+
+  @media (max-width: 600px) {
+    padding: 0 20px 0 20px;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const CoffeeListContainer = styled.div`
@@ -43,7 +49,13 @@ export const CoffeeItems = styled.div`
   flex-wrap: wrap;
   /* grid-gap: 32px; */
   height: 100%;
-  width: 100vw;
+  width: 100%;
 
   padding: 0px 160px 32px 160px;
+
+  @media (max-width: 600px) {
+    grid-column: auto;
+    grid-template-columns: 0.1fr;
+  
+  }
 `;

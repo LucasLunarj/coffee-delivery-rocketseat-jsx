@@ -32,7 +32,9 @@ export const HeaderContainer = styled.header`
     color: ${(props) => props.theme["yellow-dark"]};
   }
   @media (max-width: 600px) {
-    padding: none;
+    padding: 0;
+    justify-content: center;
+    gap: 30px;
   }
 `;
 

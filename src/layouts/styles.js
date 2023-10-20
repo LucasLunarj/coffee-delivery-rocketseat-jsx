@@ -6,5 +6,6 @@ export const DefaultContainer = styled.main`
 
   @media (min-width: 600px) {
     margin: none;
+    
   }
 `;

@@ -29,6 +29,12 @@ export const BackgroundContainer = styled.div`
     font-weight: 400;
     line-height: 130%;
   }
+  @media (max-width: 600px) {
+    flex-direction: column;
+    img {
+      width: 100%;
+    }
+  }
 `;
 
 export const AboutContainer = styled.div`
@@ -38,6 +44,11 @@ export const AboutContainer = styled.div`
   max-width: 600px;
   margin-top: 66px;
   gap: 40px;
+
+  @media (max-width: 600px) {
+    gap: 0;
+    margin-top: 50px;
+  }
 `;
 
 const baseItem = styled.div`
