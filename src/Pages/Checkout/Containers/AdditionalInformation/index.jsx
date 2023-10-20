@@ -24,6 +24,7 @@ export function AdditionalInformation() {
   const { register } = useFormContext()
   function handleSelectPaymentMethod(payment) {
     context.dispatch({ type: 'PAYMENT_METHOD', payload: payment })
+
   }
 
 
@@ -50,7 +51,12 @@ export function AdditionalInformation() {
               maxLength={9}
               {...register("cep", { maxLength: 9, required: true })}
             />
-            <input type="text" name="" id="" placeholder="Rua" {...register('street')} />
+            <input
+              type="text"
+              name="" id=""
+              placeholder="Rua"
+              {...register('street')}
+            />
             <div>
               <input type="number" name="" id="" placeholder="Número" {...register('number')} />
               <input type="text" name="" id="" placeholder="Complemento" {...register('complemento')} />

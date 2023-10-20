@@ -17,32 +17,39 @@ export function SelectedProducts() {
 
   const context = useContext(CoffeeListContext)
   const { state } = context
-  const [filteredList, setFilteredList] = useState(state.filteredList)
+  const convertedPrice = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  })
+  const total = state.filteredList.reduce((accumulator, current) => {
+    return accumulator + current.price
+  }, 0)
+  console.log(total)
   return (
 
     <SelectedProductsContainer>
       <h2>Cafés selecionados</h2>
       <CoffeeChartListContainer>
         <CoffeeList>
-          {state.filteredList?.map((item, index) => <CoffeeListBox key={item.id} index={index} {...item[0]} />)}
+          {state.filteredList?.map((item, index) => <CoffeeListBox key={item.id} index={index} {...item} />)}
 
 
           <Divider />
           <PriceAreaContainer>
             <TotalAmountItems>
               <p>Total de itens</p>
-              <p>R$ 29,70</p>
+              <p>{convertedPrice.format(total)}</p>
             </TotalAmountItems>
             <DeliveryPrice>
               <p>Entrega</p>
-              <p>R$ 3,50</p>
+              <p>{convertedPrice.format(3.5)}</p>
             </DeliveryPrice>
             <TotalPrice>
               <p>Total</p>
-              <p>R$ 33,20</p>
+              <p>{convertedPrice.format(total + 3.5)}</p>
             </TotalPrice>
           </PriceAreaContainer>
-          <NavLink to={'/success'}>
+          <NavLink to={'/success'} type="submit">
             < ConfirmButton type="submit" >Confirmar Pedido</ConfirmButton >
           </NavLink>
         </CoffeeList>

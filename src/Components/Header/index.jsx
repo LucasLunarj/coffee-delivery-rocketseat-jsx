@@ -10,6 +10,7 @@ export function Header() {
 
   const [states, setStates] = useState(dataStates)
   const [selectedState, setSelectedState] = useState([{ state: 'Rio de Janeiro', uf: 'RJ' }])
+  const [switchChart, setSwitchChart] = useState(false)
 
 
   function handleOpenCloseMenu() {
@@ -19,11 +20,15 @@ export function Header() {
     context.dispatch({ type: 'OPEN_AND_CLOSE_MENU', payload: false })
     setSelectedState(states.filter(item => item.id === id))
   }
-
+  function handleConvert(id) {
+    context.dispatch({ type: 'CONVERT_FILTERED_TO_OBJECT', payload: id })
+    setSwitchChart(true)
+  }
+  console.log(switchChart)
   return (
     <HeaderContainer>
       <NavLink to="/">
-        <img src={logo} alt="" />
+        <img disabled={switchChart} src={logo} alt="" onClick={() => setSwitchChart(false)} />
       </NavLink>
       <div>
         <LocationContainer onClick={() => handleOpenCloseMenu()}>
@@ -36,8 +41,8 @@ export function Header() {
           })}
         </MenuContainer> : null}
         <div>
-          <NavLink to="/checkout">
-            <button>
+          <NavLink to="/checkout" onClick={() => handleConvert(context.state.filteredList.id)} >
+            <button disabled={switchChart} >
               <ShoppingCart weight="fill" size={22} />
             </button>
 

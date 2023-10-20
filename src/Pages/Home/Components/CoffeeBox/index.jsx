@@ -36,6 +36,8 @@ export function CoffeeBox(props) {
     // }
     context.dispatch({ type: 'IS_ACTIVE', payload: id })
     context.dispatch({ type: 'FILTERED-LIST', payload: id })
+
+
   }
 
   return (

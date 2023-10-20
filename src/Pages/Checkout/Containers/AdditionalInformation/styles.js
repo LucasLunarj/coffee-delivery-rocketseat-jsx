@@ -149,14 +149,14 @@ export const PaymentOptionContainer = styled.div`
     cursor: pointer;
   }
 
-  button:hover {
+  button:hover ,button:focus{
     background-color: ${(props) => props.theme["purple-light"]};
   }
 
-  & :focus {
+    /* {
     border: 1px solid ${(props) => props.theme["purple"]};
     background-color: ${(props) => props.theme["purple-light"]};
-  }
+  } */
 
   svg {
     color: ${(props) => props.theme["purple"]};

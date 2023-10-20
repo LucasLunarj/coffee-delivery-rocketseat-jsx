@@ -9,7 +9,7 @@ export const reducer = (state, action) => {
       return {
         ...state, list: state.list.map((item) => {
           if (item.id === action.payload) {
-            return { ...item, amount: item.amount + 1 }
+            return { ...item, amount: item.amount + 1, price: item.price + 9.9 }
           }
           return item
         })
@@ -18,7 +18,7 @@ export const reducer = (state, action) => {
       return {
         ...state, list: state.list.map((item) => {
           if (item.id === action.payload) {
-            return { ...item, amount: item.amount - 1 }
+            return { ...item, amount: item.amount - 1, price: item.price - 9.9 }
           }
           return item
         })
@@ -28,22 +28,47 @@ export const reducer = (state, action) => {
 
       return ({
         ...state, filteredList: [...state.filteredList, state.list.filter(item => item.id === action.payload)]
+
       })
+
 
     // return produce(state, draft => {
     //   draft.filteredList.push(draft.list.filter((item) => item.id === action.payload))
     // })
-
+    case "CONVERT_FILTERED_TO_OBJECT":
+      console.log(state.filteredList, 'lunita')
+      return {
+        ...state, filteredList: state.filteredList.map(item => {
+          if (action.payload === item[0].id) {
+            return { ...item[0] }
+          }
+          return item[0]
+        })
+      }
     case "INCREMENT_FILTERED_LIST":
       console.log(state)
       return {
-        ...state, filteredList: ([state.filteredList.map(item => {
-          if (action.payload === item[0].id) {
-            return ({ ...item[0], amount: item[0].amount + 1 })
+        ...state, filteredList: (state.filteredList.map(item => {
+          if (action.payload === item.id) {
+            return ({ ...item, amount: item.amount + 1, price: item.price + 9.9 })
           }
           return item
-        })])
+
+        }))
       }
+
+    case "DECREMENT_FILTERED_LIST":
+      console.log(state.filteredList, 'test')
+      return {
+        ...state, filteredList: (state.filteredList.map(item => {
+          if (action.payload === item.id) {
+            return ({ ...item, amount: item.amount - 1, price: item.price - 9.9 })
+          }
+          return item
+        }))
+      }
+
+
     case 'IS_ACTIVE':
       return {
         ...state, list: state.list.map((item) => {

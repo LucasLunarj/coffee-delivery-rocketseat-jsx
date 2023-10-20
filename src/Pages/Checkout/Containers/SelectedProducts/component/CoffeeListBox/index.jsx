@@ -14,15 +14,24 @@ import { CoffeeListContext } from "../../../../../../contexts/CoffeListContext";
 
 
 export function CoffeeListBox(props) {
-  const { img, coffeeTitle, amount, index, id } = props
+  const { img, coffeeTitle, amount, index, id, price } = props
   const context = useContext(CoffeeListContext)
+  const convertedPrice = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  })
   function handleIncrement() {
-    context.dispatch({ type: "INCREMENT_FILTERED_LIST", payload: props.id })
+    context.dispatch({ type: "INCREMENT_FILTERED_LIST", payload: id })
+
+  }
+  function handleDecrement() {
+    context.dispatch({ type: "DECREMENT_FILTERED_LIST", payload: id })
 
   }
   function handleRemove() {
     context.dispatch({ type: 'REMOVE', payload: index })
     context.dispatch({ type: 'IS_NOT_ACTIVE', payload: id })
+
   }
   return (
     <CoffeeItemContainer>
@@ -33,9 +42,13 @@ export function CoffeeListBox(props) {
             <p>{coffeeTitle}</p>
             <div>
               <IncrementDecrementContainer>
-                <Minus size={14} />
+                <button disabled={amount === 1}>
+                  <Minus size={14} onClick={() => handleDecrement()} />
+                </button>
                 <p>{amount}</p>
-                <Plus onClick={() => handleIncrement()} size={14} />
+                <button>
+                  <Plus onClick={() => handleIncrement()} size={14} />
+                </button>
               </IncrementDecrementContainer>
               <RemoveButton onClick={() => handleRemove()}>
                 <Trash size={16} /> Remover
@@ -44,8 +57,7 @@ export function CoffeeListBox(props) {
           </ButtonArea>
         </div>
         <CoffeePriceContainer>
-          <span>R$</span>
-          <p>9,90</p>
+          <p>{convertedPrice.format(price)}</p>
         </CoffeePriceContainer>
         <div />
       </DivContainer>
